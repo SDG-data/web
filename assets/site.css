@@ -1,0 +1,9 @@
+#barplot {
+      width: 100% !important;
+      min-width: 800px;
+      height: 300px;
+}
+
+#pie_leads {
+      height: 100px;
+}
