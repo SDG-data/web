@@ -3,6 +3,8 @@ layout: empty
 title: Full List
 permalink: /list/
 js: list.js
+redirect_from:
+  - /
 ---
 
 <div class="row">
