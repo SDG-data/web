@@ -6,7 +6,7 @@ var stats = {};
 files = ["goals","targets","indicators"];
 files.forEach(function (f) {
   console.log("Loading "+f);
-  d3.json("./data/"+f+".json", function (error, data) {
+  d3.json("/data/"+f+".json", function (error, data) {
     //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
     sdgs.push(data);
     if (sdgs.length==3) { data_loaded(sdgs); }
@@ -26,7 +26,6 @@ function update_stats(sdgs){
  document.getElementById("targets-num").innerHTML = sdgs[1]["targets"].length+" Targets";
  document.getElementById("indicators-num").innerHTML = sdgs[2]["indicators"].length+" Indicators";
  add_stack_plot(stats);
- add_pie_leads(stats);
 }
 
 function add_stack_plot(stats){
@@ -71,63 +70,8 @@ function add_stack_plot(stats){
  var myBarChart = new Chart(ctx).Bar(data, options);
  
 } 
- 
-function histogram_words(words_array){
-   var frequency = {};
-   // set all initial frequencies for each word to zero
-   words_array.forEach(
-     function(value) { frequency[value] = 0; }
-   );
-   // create new array with words and their frequencies
-   var uniques = words_array.filter(
-     function(value) { return ++frequency[value] == 1; }
-   );
-   return frequency;
-}
- 
-function add_pie_leads(stats){
-   
-  var non_flat_leads=sdgs[2]["indicators"].map(function(i){return i["leads"].split(",")})
-  var leads = [].concat.apply([], non_flat_leads).map(Function.prototype.call, String.prototype.trim)
-  var leads_histogram = histogram_words(leads);
-  console.log(leads_histogram);  
-
-  var data = [
-    {
-        value: 300,
-        color:"#F7464A",
-        highlight: "#FF5A5E",
-        label: "Red"
-    },
-    {
-        value: 50,
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
-        label: "Green"
-    },
-    {
-        value: 100,
-        color: "#FDB45C",
-        highlight: "#FFC870",
-        label: "Yellow"
-    }
-   ]  
-   
-   options = {
-    segmentShowStroke : true,
-    segmentStrokeColor : "#fff",
-    segmentStrokeWidth : 2,
-    percentageInnerCutout : 50, // This is 0 for Pie charts
-    animationSteps : 100,
-    animationEasing : "easeOutBounce",
-    animateRotate : true,
-    animateScale : true,
-}
- var canvas = document.getElementById("pie_leads")
- var pie_leads = canvas.getContext("2d"); 
- Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
- var myPieChart = new Chart(pie_leads).Pie(data,options);
- } 
+  
+  
   
   
   
