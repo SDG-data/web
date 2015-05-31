@@ -10,3 +10,6 @@ github_username:  SDG-data
 
 # Build settings
 markdown: kramdown
+
+gems:
+    - jekyll-redirect-from
