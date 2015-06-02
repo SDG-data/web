@@ -1,5 +1,5 @@
 // Base URL
-dataurl = "http://sdg-data.github.io/web/data/goals.json"
+dataurl = "http://sdg-data.github.io/web/data/"
 //Read Goals, Targets and Indicators
 var sdgs = [];
 var stats = {};
