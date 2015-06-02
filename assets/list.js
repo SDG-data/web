@@ -1,4 +1,5 @@
-
+// Base URL
+dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/master/"
 //Read Goals, Targets and Indicators
 var sdgs = [];
 var stats = {};
@@ -6,7 +7,7 @@ var stats = {};
 files = ["goals","targets","indicators"];
 files.forEach(function (f) {
   console.log("Loading "+f);
-  d3.json("/data/"+f+".json", function (error, data) {
+  d3.json(dataurl+f+".json", function (error, data) {
     //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
     sdgs.push(data);
     if (sdgs.length==3) { data_loaded(sdgs); }
