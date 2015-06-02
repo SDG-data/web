@@ -4,7 +4,7 @@ description: > # this means to ignore newlines until "baseurl:"
   The data candidates behind the upcoming Sutainable Development Goals (SDG). 
   This website aggregates and offers the data in raw format, but also
   visualized and open to contributions. 
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/web/" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 github_username:  SDG-data
 
