@@ -5,7 +5,10 @@ var sdgs = [];
 var stats = {};
 
 files = ["goals","targets","indicators"];
-files.forEach(function (f) {
+function load_data(){
+  sdgs = [];
+  stats = {};
+  files.forEach(function (f) {
   console.log("Loading "+f);
   d3.json(dataurl+f+".json", function (error, data) {
     //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
@@ -13,6 +16,8 @@ files.forEach(function (f) {
     if (sdgs.length==3) { data_loaded(sdgs); }
   });
 });
+}
+$( document ).ready(load_data());
 
 function data_loaded(sdgs){
   console.log(sdgs);

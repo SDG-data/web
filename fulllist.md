@@ -15,6 +15,7 @@ redirect_from:
    <li><a id="targets-num" href="#">?? Targets</a></li>
    <li><a id="indicators-num" href="#">?? Indicators</a></li>
    </ul>
+   <button id="1" onClick="load_data()" type="button">Reload data</button>
   </div>
   <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
    <h1 class="page-header">Dashboard</h1>      
