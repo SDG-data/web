@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Link to DGs
+title: Link to MDGs
 permalink: /mdg/
 ---
 
