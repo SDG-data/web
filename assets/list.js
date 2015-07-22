@@ -93,12 +93,12 @@ function list_goals(sdgs){
   stats["goals"]=goals.length;
   for (var i in goals){
     var goal= goals[i];
-    append_li(sdgList,"goal-"+goal["goal"],goal["goal"]+": "+goal["title"]);
+    append('li',sdgList,"goal-"+goal["goal"],goal["goal"]+": "+goal["title"]);
   }
 }
 
-function append_li(hookElement,id,value){
-  var newListItem = document.createElement("li");
+function append(htype,hookElement,id,value){
+  var newListItem = document.createElement(htype);
   newListItem.setAttribute("id", id);
   var ListValue = document.createTextNode(value);
   newListItem.appendChild(ListValue);
@@ -134,7 +134,7 @@ function add_targets(sdgs){
       goalLi.appendChild(nestedOl);
     }else{
       var goalLiUl = document.getElementById(targetId);
-      append_li(goalLiUl,"target-"+target["id"],target["id"]+": "+target["title"]);
+      append('li',goalLiUl,"target-"+target["id"],target["id"]+": "+target["title"]);
     }
   }
 }
