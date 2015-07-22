@@ -74,18 +74,14 @@ function add_stack_plot(stats){
     barValueSpacing : 5,
     barDatasetSpacing : 1,
 
-}
+};
 
- var canvas = document.getElementById("barplot")
+ var canvas = document.getElementById("barplot");
  var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
 
 }
-
-
-
-
 
 function list_goals(sdgs){
   var sdgList = document.getElementById("sdgList");
