@@ -82,15 +82,41 @@ function add_stack_plot(stats){
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
 
+function empty_dashboard(){
+  document.getElementById("dashboard-title").innerHTML = "";
+  document.getElementById("dashboard-content").innerHTML = "";
 }
 
-function list_goals(sdgs){
-  var sdgList = document.getElementById("sdgList");
-  var goals=sdgs[0].goals;
-  stats.goals=goals.length;
+function list_goals(){
+  empty_dashboard();
+  document.getElementById("dashboard-title").innerHTML = "SDG Goals";
+  var sdgList = document.getElementById("dashboard-content");
+  var goals=sdgs.goals.goals;
   for (var i in goals){
     var goal= goals[i];
     append('li',sdgList,"goal-"+goal.goal,goal.goal+": "+goal.title);
+  }
+}
+
+function list_indicators(){
+  empty_dashboard();
+  document.getElementById("dashboard-title").innerHTML = "SDG Indicators";
+  var sdgList = document.getElementById("dashboard-content");
+  var indicators=sdgs.indicators.indicators;
+  for (var i in indicators){
+    var indicator= indicators[i];
+    append('li',sdgList,"goal-"+indicator.indicator,indicator.indicator+": "+indicator.indicator+".");
+  }
+}
+
+function list_targets(){
+  empty_dashboard();
+  document.getElementById("dashboard-title").innerHTML = "SDG Targets";
+  var sdgList = document.getElementById("dashboard-content");
+  var targets=sdgs.targets.targets;
+  for (var i in targets){
+    var target= targets[i];
+    append('li',sdgList,"goal-"+target.target,target.id+": "+target.title+".");
   }
 }
 
