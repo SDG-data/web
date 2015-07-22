@@ -10,32 +10,22 @@ redirect_from:
 <div class="row">
   <div class="col-sm-2 col-md-2 sidebar">
    <ul class="nav nav-sidebar">
-   <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-   <li><a id="goals-num" href="#"> ?? Goals</a></li>
-   <li><a id="targets-num" href="#">?? Targets</a></li>
-   <li><a id="indicators-num" href="#">?? Indicators</a></li>
+   <li class="active"><a onClick="vizs()" href="#">Overview <span class="sr-only">(current)</span></a></li>
+   <li><a id="goals-num" onClick="goals_list()" href="#"> ?? Goals</a></li>
+   <li><a id="targets-num" onClick="targets_list()" href="#">?? Targets</a></li>
+   <li><a id="indicators-num" onClick="indicators_list()" href="#">?? Indicators</a></li>
    </ul>
-   <button id="1" onClick="load_data()" type="button">Reload data</button>
+   <button id="1" onClick="full_list()" type="button">Load All </button>
   </div>
   <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
-   <h1 class="page-header">Dashboard</h1>      
-       
+   <h1 id='dashboard-title' class="page-header"></h1>
    <div class="row ">
-   <h2 class="sub-header">All Goals, targets and Indicators</h2>
-   <canvas id="barplot" ></canvas>
-   <div id="legendbarplot"></div>
-  </div>
- <div class="row">
-   <h2 class="sub-header">Full listing</h2>
-   <div id="sdgList"></div>
+   <p id='dashboard-content' class="sub-header"></p>
   </div>
  </div>
 </div>
 
-   
+
 
   </body>
 </html>
-
-
-
