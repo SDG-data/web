@@ -6,6 +6,7 @@ var stats = {};
 
 files = ["goals","targets","indicators"];
 function load_data(){
+  //Read into memory the SDGs
   sdgs = [];
   stats = {};
   files.forEach(function (f) {
@@ -17,9 +18,12 @@ function load_data(){
   });
 });
 }
+
+//When page loadded, read data
 $( document ).ready(load_data());
 
 function data_loaded(sdgs){
+  //Add listing and stats
   console.log(sdgs);
   list_goals(sdgs);
   add_targets(sdgs);
@@ -31,10 +35,12 @@ function update_stats(sdgs){
  document.getElementById("goals-num").innerHTML = sdgs[0]["goals"].length+" Goals";
  document.getElementById("targets-num").innerHTML = sdgs[1]["targets"].length+" Targets";
  document.getElementById("indicators-num").innerHTML = sdgs[2]["indicators"].length+" Indicators";
+ // Add left bar with numbers.
  add_stack_plot(stats);
 }
 
 function add_stack_plot(stats){
+ // Add plot stack viz on id "barplot".
  var data = {
     labels: d3.range(1, sdgs[0]["goals"].length+1).map(function(i){return "Goal "+i}),
     datasets: [
