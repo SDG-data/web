@@ -11,9 +11,9 @@ redirect_from:
   <div class="col-sm-2 col-md-2 sidebar">
    <ul class="nav nav-sidebar">
    <li class="active"><a onClick="vizs()" href="#">Overview <span class="sr-only">(current)</span></a></li>
-   <li><a id="goals-num" onClick="goals_list()" href="#"> ?? Goals</a></li>
-   <li><a id="targets-num" onClick="targets_list()" href="#">?? Targets</a></li>
-   <li><a id="indicators-num" onClick="indicators_list()" href="#">?? Indicators</a></li>
+   <li><a id="goals-num" onClick="list_goals()" href="#"> ?? Goals</a></li>
+   <li><a id="targets-num" onClick="list_targets()" href="#">?? Targets</a></li>
+   <li><a id="indicators-num" onClick="list_indicators()" href="#">?? Indicators</a></li>
    </ul>
    <button id="1" onClick="full_list()" type="button">Load All </button>
   </div>
