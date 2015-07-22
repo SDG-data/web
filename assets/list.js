@@ -6,8 +6,8 @@ var stats = {};
 
 files = ["goals","targets","indicators"];
 function load_data(){
-  //Read into memory the SDGs
-  sdgs = [];
+  //Reset and Read into memory the SDGs
+  sdgs = {};
   stats = {};
   files.forEach(function (f) {
     console.log("Loading "+f);
