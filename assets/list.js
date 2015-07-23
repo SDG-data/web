@@ -17,6 +17,7 @@ function load_data(){
       sdgs[data.meta.id]=data;
       if (sdgs.hasOwnProperty('indicators')) {
         update_stats();
+        vizs();
         data_loaded=1;}
   });
 });
