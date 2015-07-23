@@ -35,7 +35,6 @@ function full_list(){
 
 function update_stats(){
  //make stats
- console.log(sdgs);
  stats.goals=sdgs.goals.goals.length;
  stats.targets = sdgs.targets.targets.length;
  stats.indicators = sdgs.indicators.indicators.length;
@@ -51,6 +50,7 @@ function update_stats(){
 
 function vizs(){
   add_stack_plot();
+
 }
 
 function add_stack_plot(){
