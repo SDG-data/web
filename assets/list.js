@@ -5,6 +5,7 @@ var sdgs = [];
 var stats = {};
 
 files = ["goals","targets","indicators"];
+var data_loaded = 0;
 function load_data(){
   //Reset and Read into memory the SDGs
   sdgs = {};
@@ -13,9 +14,10 @@ function load_data(){
     console.log("Loading "+f);
     d3.json(dataurl+f+".json", function (error, data) {
       //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
-      console.log(error,data);
-      sdgs.push(data);
-      if (sdgs.length==3) { data_loaded(sdgs); }
+      sdgs[data.meta.id]=data;
+      if (sdgs.hasOwnProperty('indicators')) {
+        update_stats();
+        data_loaded=1;}
   });
 });
 }
@@ -23,27 +25,37 @@ function load_data(){
 //When page loadded, read data
 $( document ).ready(load_data());
 
-function data_loaded(sdgs){
+function full_list(){
   //Add listing and stats
-  console.log(sdgs);
-  list_goals(sdgs);
-  add_targets(sdgs);
-  add_indicators(sdgs);
-  update_stats(sdgs);
+  list_goals();
+  add_targets();
+  add_indicators();
 }
 
-function update_stats(sdgs){
+function update_stats(){
+ //make stats
+ console.log(sdgs);
+ stats.goals=sdgs.goals.goals.length;
+ stats.targets = sdgs.targets.targets.length;
+ stats.indicators = sdgs.indicators.indicators.length;
+ stats.goal_targets = array_num(sdgs.targets.targets.length,0);
+ stats.goal_indicators = array_num(sdgs.indicators.indicators.length,0);
+ for (var i in sdgs.indicators.indicators){ stats.goal_indicators[sdgs.indicators.indicators[i].goal-1]++; }
+ for (var j in sdgs.targets.targets){ stats.goal_targets[sdgs.targets.targets[j].goal-1]++; }
  // Add left bar with numbers.
- document.getElementById("goals-num").innerHTML = sdgs[0].goals.length+" Goals";
- document.getElementById("targets-num").innerHTML = sdgs[1].targets.length+" Targets";
- document.getElementById("indicators-num").innerHTML = sdgs[2].indicators.length+" Indicators";
- add_stack_plot(stats);
+ document.getElementById("goals-num").innerHTML = stats.goals+" Goals";
+ document.getElementById("targets-num").innerHTML = stats.targets+" Targets";
+ document.getElementById("indicators-num").innerHTML = stats.indicators+" Indicators";
 }
 
-function add_stack_plot(stats){
+function vizs(){
+  add_stack_plot();
+}
+
+function add_stack_plot(){
  // Add plot stack viz on id "barplot".
  var data = {
-    labels: d3.range(1, sdgs[0].goals.length+1).map(function(i){return "Goal "+i;}),
+    labels: d3.range(1, stats.goals).map(function(i){return "Goal "+i;}),
     datasets: [
         {
             label: "Targets",
@@ -74,13 +86,15 @@ function add_stack_plot(stats){
     barStrokeWidth : 2,
     barValueSpacing : 5,
     barDatasetSpacing : 1,
-
-};
-
- var canvas = document.getElementById("barplot");
+ };
+ var anchor=document.getElementById("dashboard-content");
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute("id", "barplot");
+ anchor.appendChild(canvas);
  var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
+}
 
 function empty_dashboard(){
   document.getElementById("dashboard-title").innerHTML = "";
@@ -94,7 +108,7 @@ function list_goals(){
   var goals=sdgs.goals.goals;
   for (var i in goals){
     var goal= goals[i];
-    append('li',sdgList,"goal-"+goal.goal,goal.goal+": "+goal.title);
+    append('li',sdgList,"goal-"+goal.goal,goal.goal+": "+goal.title+".");
   }
 }
 
@@ -128,7 +142,6 @@ function append(htype,hookElement,id,value){
   hookElement.appendChild(newListItem);
 }
 
-
 function append_row(hookElement,row){
  var table = document.getElementById(hookElement);
   var rowObject = table.insertRow(0);
@@ -142,13 +155,10 @@ function array_num(size,num){
   return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
 }
 
-function add_targets(sdgs){
-  var targets=sdgs[1].targets;
-  stats.targets = targets.length;
-  stats.goal_targets = array_num(targets.length,0);
+function add_targets(){
+  var targets=sdgs.targets;
   for (var i in targets){
     var target=targets[i];
-    stats.goal_targets[target.goal-1]++;
     var goalLi = document.getElementById("goal-"+target.goal);
     var targetId="goal-"+target.goal+"-targets";
     if ( document.getElementById(targetId) === null) {
@@ -163,13 +173,9 @@ function add_targets(sdgs){
 }
 
 function add_indicators(sdgs){
-  var indicators=sdgs[2].indicators;
-  stats.indicators = indicators.length;
-  stats.goal_indicators = array_num(indicators.length,0);
-
+  var indicators=sdgs.indicators;
   for (var i in indicators){
     var indicator=indicators[i];
-    stats.goal_indicators[indicator.goal-1]++;
     var goalLi = document.getElementById("goal-"+indicator.goal);
     var indicatorsId="goal-"+indicator.goal+"-indicators";
     if (document.getElementById(indicatorsId) === null) {
