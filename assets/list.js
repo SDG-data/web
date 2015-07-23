@@ -49,12 +49,14 @@ function update_stats(){
 }
 
 function vizs(){
+  empty_dashboard();
   add_stack_plot();
 
 }
 
 function add_stack_plot(){
  // Add plot stack viz on id "barplot".
+ document.getElementById("dashboard-title").innerHTML = "SDGs Visualized";
  var data = {
     labels: d3.range(1, stats.goals).map(function(i){return "Goal "+i;}),
     datasets: [
@@ -89,9 +91,12 @@ function add_stack_plot(){
     barDatasetSpacing : 1,
  };
  var anchor=document.getElementById("dashboard-content");
+ var stack_plot_title = document.createElement("h3");
+ stack_plot_title.setAttribute("id", "barplot-title");
+ stack_plot_title.innerHTML="Indicators and Targets per Goal";
  var canvas = document.createElement("canvas");
  canvas.setAttribute("id", "barplot");
- anchor.appendChild(canvas);
+ anchor.appendChild(stack_plot_title).appendChild(canvas);
  var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
