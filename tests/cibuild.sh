@@ -6,4 +6,4 @@ bundle exec jekyll build
 
 #These tests check if your image references,
 #alt tags, internal links...
-bundle exec htmlproof ./_site --only-4xx  --check-html --href-ignore "#"
+#bundle exec htmlproof ./_site --only-4xx  --check-html --href-ignore "#"
