@@ -3,8 +3,6 @@ layout: empty
 title: Full List
 permalink: /list/
 js: list.js
-redirect_from:
-  - /
 ---
 
 <div class="row">
@@ -18,8 +16,8 @@ redirect_from:
    <button id="1" onClick="load_data()" type="button">Reload data</button>
   </div>
   <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
-   <h1 class="page-header">Dashboard</h1>      
-       
+   <h1 class="page-header">Dashboard</h1>
+
    <div class="row ">
    <h2 class="sub-header">All Goals, targets and Indicators</h2>
    <canvas id="barplot" ></canvas>
@@ -32,10 +30,7 @@ redirect_from:
  </div>
 </div>
 
-   
+
 
   </body>
 </html>
-
-
-
