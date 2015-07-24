@@ -91,12 +91,9 @@ function add_stack_plot(){
     barDatasetSpacing : 1,
  };
  var anchor=document.getElementById("dashboard-content");
- var stack_plot_title = document.createElement("h3");
- stack_plot_title.setAttribute("id", "barplot-title");
- stack_plot_title.innerHTML="Indicators and Targets per Goal";
  var canvas = document.createElement("canvas");
  canvas.setAttribute("id", "barplot");
- anchor.appendChild(stack_plot_title).appendChild(canvas);
+ anchor.appendChild(canvas);
  var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
@@ -162,7 +159,7 @@ function array_num(size,num){
 }
 
 function add_targets(){
-  var targets=sdgs.targets;
+  var targets=sdgs.targets.targets;
   for (var i in targets){
     var target=targets[i];
     var goalLi = document.getElementById("goal-"+target.goal);
@@ -178,8 +175,8 @@ function add_targets(){
   }
 }
 
-function add_indicators(sdgs){
-  var indicators=sdgs.indicators;
+function add_indicators(){
+  var indicators=sdgs.indicators.indicators;
   for (var i in indicators){
     var indicator=indicators[i];
     var goalLi = document.getElementById("goal-"+indicator.goal);
