@@ -8,6 +8,3 @@ baseurl: "/web" # the subpath of your site, e.g. /blog/
 github_username:  SDG-data
 # Build settings
 markdown: kramdown
-
-gems:
-    - jekyll-redirect-from
