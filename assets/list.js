@@ -28,7 +28,7 @@ $( document ).ready(load_data());
 
 function full_list(){
   //Add listing and stats
-  list_goals();
+  add_goals();
   add_targets();
   add_indicators();
 }
