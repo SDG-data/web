@@ -38,8 +38,8 @@ function update_stats(){
  stats.goals=sdgs.goals.goals.length;
  stats.targets = sdgs.targets.targets.length;
  stats.indicators = sdgs.indicators.indicators.length;
- stats.goal_targets = array_num(sdgs.targets.targets.length,0);
- stats.goal_indicators = array_num(sdgs.indicators.indicators.length,0);
+ stats.goal_targets = array_num(sdgs.goals.goals.length,0);
+ stats.goal_indicators = array_num(sdgs.goals.goals.length,0);
  for (var i in sdgs.indicators.indicators){ stats.goal_indicators[sdgs.indicators.indicators[i].goal-1]++; }
  for (var j in sdgs.targets.targets){ stats.goal_targets[sdgs.targets.targets[j].goal-1]++; }
  // Add left bar with numbers.
