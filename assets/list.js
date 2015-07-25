@@ -50,6 +50,7 @@ function update_stats(){
 
 function vizs(){
   empty_dashboard();
+  $('#Visualizations').addClass("btn-primary");
   add_stack_plot();
 
 }
@@ -102,10 +103,13 @@ function add_stack_plot(){
 function empty_dashboard(){
   document.getElementById("dashboard-title").innerHTML = "";
   document.getElementById("dashboard-content").innerHTML = "";
+  $('li.active').removeClass("active");
+  $('#Visualizations').removeClass("btn-primary");
 }
 
 function list_goals(){
   empty_dashboard();
+  $('#goals').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Goals";
   var sdgList = document.getElementById("dashboard-content");
   var goals=sdgs.goals.goals;
@@ -117,6 +121,7 @@ function list_goals(){
 
 function list_indicators(){
   empty_dashboard();
+  $('#indicators').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Indicators";
   var sdgList = document.getElementById("dashboard-content");
   var indicators=sdgs.indicators.indicators;
@@ -128,6 +133,7 @@ function list_indicators(){
 
 function list_targets(){
   empty_dashboard();
+  $('#targets').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Targets";
   var sdgList = document.getElementById("dashboard-content");
   var targets=sdgs.targets.targets;
@@ -158,6 +164,7 @@ function array_num(size,num){
   return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
 }
 
+  $('#load-all').addClass("active");
 function add_targets(){
   var targets=sdgs.targets.targets;
   for (var i in targets){
