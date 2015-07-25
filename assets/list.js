@@ -111,7 +111,7 @@ function list_goals(){
   var goals=sdgs.goals.goals;
   for (var i in goals){
     var goal= goals[i];
-    append('li',sdgList,"goal-"+goal.goal,goal.goal+": "+goal.title+".");
+    append('li',sdgList,"goal-"+goal.goal,"",goal.goal+": "+goal.title+".");
   }
 }
 
@@ -123,7 +123,7 @@ function list_indicators(){
   var indicators=sdgs.indicators.indicators;
   for (var i in indicators){
     var indicator= indicators[i];
-    append('li',sdgList,"goal-"+indicator.indicator,indicator.indicator+": "+indicator.indicator+".");
+    append('li',sdgList,"goal-"+indicator.indicator,"indicator",indicator.indicator+": "+indicator.indicator+".");
   }
 }
 
@@ -135,16 +135,18 @@ function list_targets(){
   var targets=sdgs.targets.targets;
   for (var i in targets){
     var target= targets[i];
-    append('li',sdgList,"goal-"+target.target,target.id+": "+target.title+".");
+    append('li',sdgList,"goal-"+target.target,"",target.id+": "+target.title+".");
   }
 }
 
-function append(htype,hookElement,id,value){
+function append(htype,hookElement,id,classes,value){
+  var wrapper = document.createElement("div");
   var newListItem = document.createElement(htype);
-  newListItem.setAttribute("id", id);
+  wrapper.setAttribute("id", id);
+  newListItem.setAttribute("class", classes);
   var ListValue = document.createTextNode(value);
   newListItem.appendChild(ListValue);
-  hookElement.appendChild(newListItem);
+  hookElement.appendChild(wrapper).appendChild(newListItem);
 }
 
 function append_row(hookElement,row){
@@ -160,7 +162,18 @@ function array_num(size,num){
   return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
 }
 
+function add_goals(){
+  empty_dashboard();
   $('#load-all').addClass("active");
+  document.getElementById("dashboard-title").innerHTML = "SDG Goals";
+  var sdgList = document.getElementById("dashboard-content");
+  var goals=sdgs.goals.goals;
+  for (var i in goals){
+    var goal= goals[i];
+    append('li',sdgList,"goal-"+goal.goal,"h2",goal.goal+": "+goal.title+".");
+  }
+}
+
 function add_targets(){
   var targets=sdgs.targets.targets;
   for (var i in targets){
@@ -173,7 +186,7 @@ function add_targets(){
       goalLi.appendChild(nestedOl);
     }else{
       var goalLiUl = document.getElementById(targetId);
-      append('li',goalLiUl,"target-"+target.id,target.id+": "+target.title);
+      append('li',goalLiUl,"target-"+target.id,"target",target.id+": "+target.title);
     }
   }
 }
@@ -199,6 +212,7 @@ function add_indicators(){
       }
       var body = nestedTable.createTBody();
       body.setAttribute("id", indicatorsId);
+      body.setAttribute("class", "indicator");
       goalLi.appendChild(responsiveTable).appendChild(nestedTable);
      }else{
       append_row(indicatorsId,[indicator.indicator,indicator.leads,indicator.available]);
