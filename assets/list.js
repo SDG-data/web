@@ -59,7 +59,8 @@ function add_stack_plot(){
  // Add plot stack viz on id "barplot".
  document.getElementById("dashboard-title").innerHTML = "SDGs Visualized";
  var data = {
-    labels: d3.range(1, stats.goals).map(function(i){return "Goal "+i;}),
+    labels: d3.range(1, stats.goals+1).map(function(i){return "Goal "+i;}),
+    labels_tooltip: sdgs.goals.goals.map(function (key) { return key.short;}),
     datasets: [
         {
             label: "Targets",
@@ -80,21 +81,16 @@ function add_stack_plot(){
     ]
  };
  var options = {
-    scaleBeginAtZero : true,
-    scaleShowGridLines : true,
-    scaleGridLineColor : "rgba(0,0,0,.05)",
-    scaleGridLineWidth : 1,
-    scaleShowHorizontalLines: true,
-    scaleShowVerticalLines: true,
-    barShowStroke : true,
-    barStrokeWidth : 2,
-    barValueSpacing : 5,
-    barDatasetSpacing : 1,
+    barStrokeWidth : 2
  };
  var anchor=document.getElementById("dashboard-content");
+ var wrapper = document.createElement("div");
+ var title = document.createElement("h3");
+ title.innerHTML = "Indicators and Targets per Goal";
  var canvas = document.createElement("canvas");
  canvas.setAttribute("id", "barplot");
- anchor.appendChild(canvas);
+ canvas.setAttribute("class", "barplot");
+ anchor.appendChild(wrapper).appendChild(title).appendChild(canvas);
  var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
