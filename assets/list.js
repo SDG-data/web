@@ -1,42 +1,66 @@
 // Base URL
-dataurl = "//"+window.location.host+"/web/data/"
+dataurl = "//"+window.location.host+"/web/data/";
 //Read Goals, Targets and Indicators
 var sdgs = [];
 var stats = {};
 
 files = ["goals","targets","indicators"];
+var data_loaded = 0;
 function load_data(){
-  sdgs = [];
+  //Reset and Read into memory the SDGs
+  sdgs = {};
   stats = {};
   files.forEach(function (f) {
-  console.log("Loading "+f);
-  d3.json(dataurl+f+".json", function (error, data) {
-    //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
-    sdgs.push(data);
-    if (sdgs.length==3) { data_loaded(sdgs); }
+    console.log("Loading "+f);
+    d3.json(dataurl+f+".json", function (error, data) {
+      //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
+      sdgs[data.meta.id]=data;
+      if (Object.keys(sdgs).length == 3) {
+        update_stats();
+        vizs();
+        data_loaded=1;}
   });
 });
 }
+
+//When page loadded, read data
 $( document ).ready(load_data());
 
-function data_loaded(sdgs){
-  console.log(sdgs);
-  list_goals(sdgs);
-  add_targets(sdgs);
-  add_indicators(sdgs);
-  update_stats(sdgs);
+function full_list(){
+  //Add listing and stats
+  add_goals();
+  add_targets();
+  add_indicators();
 }
 
-function update_stats(sdgs){
- document.getElementById("goals-num").innerHTML = sdgs[0]["goals"].length+" Goals";
- document.getElementById("targets-num").innerHTML = sdgs[1]["targets"].length+" Targets";
- document.getElementById("indicators-num").innerHTML = sdgs[2]["indicators"].length+" Indicators";
- add_stack_plot(stats);
+function update_stats(){
+ //make stats
+ stats.goals=sdgs.goals.goals.length;
+ stats.targets = sdgs.targets.targets.length;
+ stats.indicators = sdgs.indicators.indicators.length;
+ stats.goal_targets = array_num(sdgs.goals.goals.length,0);
+ stats.goal_indicators = array_num(sdgs.goals.goals.length,0);
+ for (var i in sdgs.indicators.indicators){ stats.goal_indicators[sdgs.indicators.indicators[i].goal-1]++; }
+ for (var j in sdgs.targets.targets){ stats.goal_targets[sdgs.targets.targets[j].goal-1]++; }
+ // Add left bar with numbers.
+ document.getElementById("goals-num").innerHTML = stats.goals+" Goals";
+ document.getElementById("targets-num").innerHTML = stats.targets+" Targets";
+ document.getElementById("indicators-num").innerHTML = stats.indicators+" Indicators";
 }
 
-function add_stack_plot(stats){
+function vizs(){
+  empty_dashboard();
+  $('#Visualizations').addClass("btn-primary");
+  add_stack_plot();
+
+}
+
+function add_stack_plot(){
+ // Add plot stack viz on id "barplot".
+ document.getElementById("dashboard-title").innerHTML = "SDGs Visualized";
  var data = {
-    labels: d3.range(1, sdgs[0]["goals"].length+1).map(function(i){return "Goal "+i}),
+    labels: d3.range(1, stats.goals+1).map(function(i){return "Goal "+i;}),
+    labels_tooltip: sdgs.goals.goals.map(function (key) { return key.short;}),
     datasets: [
         {
             label: "Targets",
@@ -44,7 +68,7 @@ function add_stack_plot(stats){
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: stats["goal_targets"] 
+            data: stats.goal_targets
         },
         {
             label: "Indicators",
@@ -52,53 +76,78 @@ function add_stack_plot(stats){
             strokeColor: "rgba(151,187,205,0.8)",
             highlightFill: "rgba(151,187,205,0.75)",
             highlightStroke: "rgba(151,187,205,1)",
-            data: stats["goal_indicators"] 
+            data: stats.goal_indicators
         }
     ]
  };
  var options = {
-    scaleBeginAtZero : true,
-    scaleShowGridLines : true,
-    scaleGridLineColor : "rgba(0,0,0,.05)",
-    scaleGridLineWidth : 1,
-    scaleShowHorizontalLines: true,
-    scaleShowVerticalLines: true,
-    barShowStroke : true,
-    barStrokeWidth : 2,
-    barValueSpacing : 5,
-    barDatasetSpacing : 1,
-
-}
-
- var canvas = document.getElementById("barplot")
- var ctx= canvas.getContext("2d"); 
+    barStrokeWidth : 2
+ };
+ var anchor=document.getElementById("dashboard-content");
+ var wrapper = document.createElement("div");
+ var title = document.createElement("h3");
+ title.innerHTML = "Indicators and Targets per Goal";
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute("id", "barplot");
+ canvas.setAttribute("class", "barplot");
+ anchor.appendChild(wrapper).appendChild(title).appendChild(canvas);
+ var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
- 
-} 
-  
-  
-  
-  
-  
-function list_goals(sdgs){
-  var sdgList = document.getElementById("sdgList"); 
-  var goals=sdgs[0]["goals"];
-  stats["goals"]=goals.length;
+}
+
+function empty_dashboard(){
+  document.getElementById("dashboard-title").innerHTML = "";
+  document.getElementById("dashboard-content").innerHTML = "";
+  $('li.active').removeClass("active");
+  $('#Visualizations').removeClass("btn-primary");
+}
+
+function list_goals(){
+  empty_dashboard();
+  $('#goals').addClass("active");
+  document.getElementById("dashboard-title").innerHTML = "SDG Goals";
+  var sdgList = document.getElementById("dashboard-content");
+  var goals=sdgs.goals.goals;
   for (var i in goals){
     var goal= goals[i];
-    append_li(sdgList,"goal-"+goal["goal"],goal["goal"]+": "+goal["title"]);
+    append('li',sdgList,"goal-"+goal.goal,"",goal.goal+": "+goal.title+".");
   }
 }
 
-function append_li(hookElement,id,value){
-  var newListItem = document.createElement("li");
-  newListItem.setAttribute("id", id);
-  var ListValue = document.createTextNode(value);
-  newListItem.appendChild(ListValue);
-  hookElement.appendChild(newListItem);
+function list_indicators(){
+  empty_dashboard();
+  $('#indicators').addClass("active");
+  document.getElementById("dashboard-title").innerHTML = "SDG Indicators";
+  var sdgList = document.getElementById("dashboard-content");
+  var indicators=sdgs.indicators.indicators;
+  for (var i in indicators){
+    var indicator= indicators[i];
+    append('li',sdgList,"goal-"+indicator.indicator,"indicator",indicator.indicator+": "+indicator.indicator+".");
+  }
 }
 
+function list_targets(){
+  empty_dashboard();
+  $('#targets').addClass("active");
+  document.getElementById("dashboard-title").innerHTML = "SDG Targets";
+  var sdgList = document.getElementById("dashboard-content");
+  var targets=sdgs.targets.targets;
+  for (var i in targets){
+    var target= targets[i];
+    append('li',sdgList,"goal-"+target.target,"",target.id+": "+target.title+".");
+  }
+}
+
+function append(htype,hookElement,id,classes,value){
+  var wrapper = document.createElement("div");
+  var newListItem = document.createElement(htype);
+  wrapper.setAttribute("id", id);
+  newListItem.setAttribute("class", classes);
+  var ListValue = document.createTextNode(value);
+  newListItem.appendChild(ListValue);
+  hookElement.appendChild(wrapper).appendChild(newListItem);
+}
 
 function append_row(hookElement,row){
  var table = document.getElementById(hookElement);
@@ -113,57 +162,60 @@ function array_num(size,num){
   return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
 }
 
-function add_targets(sdgs){
-  var targets=sdgs[1]["targets"];
-  stats["targets"] = targets.length;
-  stats["goal_targets"] = array_num(targets.length,0);
+function add_goals(){
+  empty_dashboard();
+  $('#load-all').addClass("active");
+  document.getElementById("dashboard-title").innerHTML = "SDG Goals";
+  var sdgList = document.getElementById("dashboard-content");
+  var goals=sdgs.goals.goals;
+  for (var i in goals){
+    var goal= goals[i];
+    append('li',sdgList,"goal-"+goal.goal,"h2",goal.goal+": "+goal.title+".");
+  }
+}
+
+function add_targets(){
+  var targets=sdgs.targets.targets;
   for (var i in targets){
     var target=targets[i];
-    stats["goal_targets"][target["goal"]-1]++;
-    var goalLi = document.getElementById("goal-"+target["goal"]);
-    var targetId="goal-"+target["goal"]+"-targets";
-    if ( document.getElementById(targetId) == null) {
+    var goalLi = document.getElementById("goal-"+target.goal);
+    var targetId="goal-"+target.goal+"-targets";
+    if ( document.getElementById(targetId) === null) {
       var nestedOl = document.createElement("ul");
       nestedOl.setAttribute("id", targetId);
       goalLi.appendChild(nestedOl);
     }else{
       var goalLiUl = document.getElementById(targetId);
-      append_li(goalLiUl,"target-"+target["id"],target["id"]+": "+target["title"]);
+      append('li',goalLiUl,"target-"+target.id,"target",target.id+": "+target.title);
     }
   }
 }
 
-function add_indicators(sdgs){
-  var indicators=sdgs[2]["indicators"];
-  stats["indicators"] = indicators.length;
-  stats["goal_indicators"] = array_num(indicators.length,0);
-  
+function add_indicators(){
+  var indicators=sdgs.indicators.indicators;
   for (var i in indicators){
-    var indicator=indicators[i]; 
-    stats["goal_indicators"][indicator["goal"]-1]++;
-    var goalLi = document.getElementById("goal-"+indicator["goal"]);
-    var indicatorsId="goal-"+indicator["goal"]+"-indicators";
-    if (document.getElementById(indicatorsId) == null) {
+    var indicator=indicators[i];
+    var goalLi = document.getElementById("goal-"+indicator.goal);
+    var indicatorsId="goal-"+indicator.goal+"-indicators";
+    if (document.getElementById(indicatorsId) === null) {
       var responsiveTable = document.createElement("div");
       responsiveTable.setAttribute("class","table-responsive");
       var nestedTable = document.createElement("table");
       nestedTable.setAttribute("class","table table-striped table-bordered");
       var header = nestedTable.createTHead();
       var rowObject = header.insertRow(0);
-      var columns=["Indicator","Leads","Available"]
-      for (var i in columns ){
+      var columns=["Indicator","Leads","Available"];
+      for (var ii in columns ){
           var th = document.createElement('th');
-          th.innerHTML = columns[i];
+          th.innerHTML = columns[ii];
           rowObject.appendChild(th);
-      }   
+      }
       var body = nestedTable.createTBody();
       body.setAttribute("id", indicatorsId);
+      body.setAttribute("class", "indicator");
       goalLi.appendChild(responsiveTable).appendChild(nestedTable);
      }else{
-      append_row(indicatorsId,[indicator["indicator"],indicator["leads"],indicator["available"]]);
+      append_row(indicatorsId,[indicator.indicator,indicator.leads,indicator.available]);
     }
   }
 }
-
-
-
