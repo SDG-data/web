@@ -15,7 +15,7 @@ function load_data(){
     d3.json(dataurl+f+".json", function (error, data) {
       //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
       sdgs[data.meta.id]=data;
-      if (sdgs.hasOwnProperty('indicators')) {
+      if (Object.keys(sdgs).length == 3) {
         update_stats();
         vizs();
         data_loaded=1;}
