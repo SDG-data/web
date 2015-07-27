@@ -1,5 +1,6 @@
 // Base URL
-dataurl = "//"+window.location.host+"/web/data/";
+var version = "v0.03"
+var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/"
 //Read Goals, Targets and Indicators
 var sdgs = [];
 var stats = {};
