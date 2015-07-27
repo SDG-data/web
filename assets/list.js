@@ -29,7 +29,6 @@ $( document ).ready(load_data());
 
 function load_data_state(){
   var data_state= getURLParameter('data');
-  console.log(data_state);
   switch(data_state) {
     case "full_list":
         full_list();
