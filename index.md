@@ -8,9 +8,9 @@ The Sustainable Development Goals (SDGs) are a proposed set of targets relating 
 
 ###The SDGs
 
-* [Get a complete list]({{site.baseurl}}/web/list/) of the Goals, Targets and Indicators, pulling from a [machine readable source](https://github.com/SDG-data/SDGs) anyone can reuse.
+* [Get a complete list]({{site.baseurl}}/list/?data=full_list) of the Goals, Targets and Indicators, pulling from a [machine readable source](https://github.com/SDG-data/SDGs) anyone can reuse.
 
-* [Take a look to the visualizations]({{site.baseurl}}/web/list/?data=full_list) breaking down the SDGs by topic, goals, source, data available...
+* [Take a look to the visualizations]({{site.baseurl}}/list/) breaking down the SDGs by topic, goals, source, data available...
 
 
 Data will be key to understand, monitor and inform the path to achieve these Goals. This website was created to host a community maintained, open repository of the SDG goals, and pointers to the underlying data.
