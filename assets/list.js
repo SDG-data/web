@@ -18,17 +18,31 @@ function load_data(){
       sdgs[data.meta.id]=data;
       if (Object.keys(sdgs).length == 3) {
         update_stats();
-        vizs();
+        load_data_state();
         data_loaded=1;}
   });
 });
 }
 
-//When page loadded, read data
+//When page loadded, read data and URL state, if any
 $( document ).ready(load_data());
+
+function load_data_state(){
+  var data_state= getURLParameter('data');
+  console.log(data_state);
+  switch(data_state) {
+    case "full_list":
+        full_list();
+        break;
+    default:
+        vizs();
+  }
+}
 
 function full_list(){
   //Add listing and stats
+  updateURLParameters("full_list");
+  empty_dashboard();
   add_goals();
   add_targets();
   add_indicators();
@@ -51,6 +65,7 @@ function update_stats(){
 
 function vizs(){
   empty_dashboard();
+  updateURLParameters("vizs");
   $('#Visualizations').addClass("btn-primary");
   add_stack_plot();
 
@@ -105,6 +120,7 @@ function empty_dashboard(){
 }
 
 function list_goals(){
+  updateURLParameters("list_goals");
   empty_dashboard();
   $('#goals').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Goals";
@@ -117,6 +133,7 @@ function list_goals(){
 }
 
 function list_indicators(){
+  updateURLParameters("list_indicators");
   empty_dashboard();
   $('#indicators').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Indicators";
@@ -129,6 +146,7 @@ function list_indicators(){
 }
 
 function list_targets(){
+  updateURLParameters("list_targets");
   empty_dashboard();
   $('#targets').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Targets";
@@ -164,7 +182,6 @@ function array_num(size,num){
 }
 
 function add_goals(){
-  empty_dashboard();
   $('#load-all').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Goals";
   var sdgList = document.getElementById("dashboard-content");
