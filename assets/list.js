@@ -66,13 +66,13 @@ function vizs(){
   empty_dashboard();
   updateURLParameters("vizs");
   $('#Visualizations').addClass("btn-primary");
+  document.getElementById("dashboard-title").innerHTML = "SDGs Visualized";
   add_stack_plot();
-
+  add_leads_pie();
 }
 
 function add_stack_plot(){
  // Add plot stack viz on id "barplot".
- document.getElementById("dashboard-title").innerHTML = "SDGs Visualized";
  var data = {
     labels: d3.range(1, stats.goals+1).map(function(i){return "Goal "+i;}),
     labels_tooltip: sdgs.goals.goals.map(function (key) { return key.short;}),
@@ -105,10 +105,48 @@ function add_stack_plot(){
  var canvas = document.createElement("canvas");
  canvas.setAttribute("id", "barplot");
  canvas.setAttribute("class", "barplot");
- anchor.appendChild(wrapper).appendChild(title).appendChild(canvas);
+ anchor.appendChild(wrapper).appendChild(title);
+ anchor.appendChild(wrapper).appendChild(canvas);
  var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
+}
+
+function add_leads_pie(){
+ // Add leads pie. Leads normalized by indicator
+ // (indicator with 2 leads, each get +0.5).
+ var data = [
+    {
+        value: 300,
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Red"
+    },
+    {
+        value: 50,
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Green"
+    },
+    {
+        value: 100,
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Yellow"
+    }
+ ];
+ var options = [];
+ var anchor=document.getElementById("dashboard-content");
+ var wrapper = document.createElement("div");
+ var title = document.createElement("h3");
+ title.innerHTML = "Leads per Indicator";
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute("id", "leadpie");
+ canvas.setAttribute("class", "pie");
+ anchor.appendChild(wrapper).appendChild(title);
+ anchor.appendChild(wrapper).appendChild(canvas);
+ var ctx= canvas.getContext("2d");
+ var myPieChart = new Chart(ctx).Pie(data,options);
 }
 
 function empty_dashboard(){
