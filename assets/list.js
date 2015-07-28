@@ -29,7 +29,6 @@ $( document ).ready(load_data());
 
 function load_data_state(){
   var data_state= getURLParameter('data');
-  console.log(data_state);
   switch(data_state) {
     case "full_list":
         full_list();
@@ -67,13 +66,13 @@ function vizs(){
   empty_dashboard();
   updateURLParameters("vizs");
   $('#Visualizations').addClass("btn-primary");
+  document.getElementById("dashboard-title").innerHTML = "SDGs Visualized";
   add_stack_plot();
-
+  add_leads_pie();
 }
 
 function add_stack_plot(){
  // Add plot stack viz on id "barplot".
- document.getElementById("dashboard-title").innerHTML = "SDGs Visualized";
  var data = {
     labels: d3.range(1, stats.goals+1).map(function(i){return "Goal "+i;}),
     labels_tooltip: sdgs.goals.goals.map(function (key) { return key.short;}),
@@ -106,10 +105,82 @@ function add_stack_plot(){
  var canvas = document.createElement("canvas");
  canvas.setAttribute("id", "barplot");
  canvas.setAttribute("class", "barplot");
- anchor.appendChild(wrapper).appendChild(title).appendChild(canvas);
+ anchor.appendChild(wrapper).appendChild(title);
+ anchor.appendChild(wrapper).appendChild(canvas);
  var ctx= canvas.getContext("2d");
  Chart.defaults.global.multiTooltipTemplate = "<%= value %> <%= datasetLabel %> ";
  var myBarChart = new Chart(ctx).Bar(data, options);
+}
+
+function count_match_leads(dictionary,regex){
+ //Given a dictionary, return the sum of the values whose
+ //keys match the string
+ var count = 0;
+ for (var key in dictionary){
+   regex.test(key)? count+=dictionary[key]: null;
+ }
+ return count;
+}
+
+function add_leads_pie(){
+ // Add leads pie. Leads normalized by indicator
+
+ //count leads
+ var leads = {total:0};
+ for (var j in sdgs.indicators.indicators){
+  var ileads = sdgs.indicators.indicators[j].leads.split(",");
+   for (var jj in ileads){
+    var lead=ileads[jj].trim().replace('""',"");
+    leads[lead] ? leads[lead]++ : leads[lead]=1;
+    leads["total"]++;
+   }
+  }
+ var data = [
+    {
+        value: count_match_leads(leads,/UN/),
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "UN bodies"
+    },
+    {
+        value: count_match_leads(leads,/WB|World Bank/),
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "World Bank Group"
+    },
+    {
+        value: count_match_leads(leads,/OECD/),
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "OECD"
+    },
+    {
+        value: leads["total"]-
+               count_match_leads(leads,/OECD|WB|UN|World Bank/)
+               -leads[""],
+        color: "#FF245C",
+        highlight: "#FF245A",
+        label: "Others"
+    },
+    {
+        value: leads[""],
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Unclear"
+    }
+];
+ var options = [];
+ var anchor=document.getElementById("dashboard-content");
+ var wrapper = document.createElement("div");
+ var title = document.createElement("h3");
+ title.innerHTML = "Leads per Indicator";
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute("id", "leadpie");
+ canvas.setAttribute("class", "pie");
+ anchor.appendChild(wrapper).appendChild(title);
+ anchor.appendChild(wrapper).appendChild(canvas);
+ var ctx= canvas.getContext("2d");
+ var myPieChart = new Chart(ctx).Pie(data,options);
 }
 
 function empty_dashboard(){
