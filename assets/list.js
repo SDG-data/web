@@ -124,7 +124,17 @@ function count_match_leads(dictionary,regex){
 
 function add_leads_pie(){
  // Add leads pie. Leads normalized by indicator
- // (indicator with 2 leads, each get +0.5).
+
+ //count leads
+ var leads = {total:0};
+ for (var j in sdgs.indicators.indicators){
+  var ileads = sdgs.indicators.indicators[j].leads.split(",");
+   for (var jj in ileads){
+    var lead=ileads[jj].trim().replace('""',"");
+    leads[lead] ? leads[lead]++ : leads[lead]=1;
+    leads["total"]++;
+   }
+  }
  var data = [
     {
         value: 300,
