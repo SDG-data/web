@@ -137,24 +137,38 @@ function add_leads_pie(){
   }
  var data = [
     {
-        value: 300,
+        value: count_match_leads(leads,/UN/),
         color:"#F7464A",
         highlight: "#FF5A5E",
-        label: "Red"
+        label: "UN bodies"
     },
     {
-        value: 50,
+        value: count_match_leads(leads,/WB|World Bank/),
         color: "#46BFBD",
         highlight: "#5AD3D1",
-        label: "Green"
+        label: "World Bank Group"
     },
     {
-        value: 100,
+        value: count_match_leads(leads,/OECD/),
         color: "#FDB45C",
         highlight: "#FFC870",
-        label: "Yellow"
+        label: "OECD"
+    },
+    {
+        value: leads["total"]-
+               count_match_leads(leads,/OECD|WB|UN|World Bank/)
+               -leads[""],
+        color: "#FF245C",
+        highlight: "#FF245A",
+        label: "Others"
+    },
+    {
+        value: leads[""],
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Unclear"
     }
- ];
+];
  var options = [];
  var anchor=document.getElementById("dashboard-content");
  var wrapper = document.createElement("div");
