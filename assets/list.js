@@ -1,6 +1,6 @@
 // Base URL
-var version = "v0.03"
-var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/"
+var version = "v0.03";
+var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/";
 //Read Goals, Targets and Indicators
 var sdgs = [];
 var stats = {};
@@ -131,8 +131,8 @@ function add_leads_pie(){
   var ileads = sdgs.indicators.indicators[j].leads.split(",");
    for (var jj in ileads){
     var lead=ileads[jj].trim().replace('""',"");
-    leads[lead] ? leads[lead]++ : leads[lead]=1;
-    leads["total"]++;
+    leads[lead] ? leads[lead]++ : leads[lead] = 1;
+    leads.total++;
    }
   }
  var data = [
