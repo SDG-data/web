@@ -112,6 +112,16 @@ function add_stack_plot(){
  var myBarChart = new Chart(ctx).Bar(data, options);
 }
 
+function count_match_leads(dictionary,regex){
+ //Given a dictionary, return the sum of the values whose
+ //keys match the string
+ var count = 0;
+ for (var key in dictionary){
+   regex.test(key)? count+=dictionary[key]: null;
+ }
+ return count;
+}
+
 function add_leads_pie(){
  // Add leads pie. Leads normalized by indicator
  // (indicator with 2 leads, each get +0.5).
