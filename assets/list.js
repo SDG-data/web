@@ -1,6 +1,7 @@
 // Base URL
 var version = "v0.03";
 var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/";
+var dataurl = "../data/";
 //Read Goals, Targets and Indicators
 var sdgs = [];
 var stats = {};
@@ -234,8 +235,12 @@ function append(htype,hookElement,id,classes,value){
   var newListItem = document.createElement(htype);
   wrapper.setAttribute("id", id);
   newListItem.setAttribute("class", classes);
-  var ListValue = document.createTextNode(value);
-  newListItem.appendChild(ListValue);
+  if (classes=="h2"){
+    newListItem.innerHTML = HTMLlink(value+htype,"#"+id);
+  }else{
+    var ListValue = document.createTextNode(value);
+    newListItem.appendChild(ListValue);
+  }
   hookElement.appendChild(wrapper).appendChild(newListItem);
 }
 
@@ -250,6 +255,10 @@ function append_row(hookElement,row){
 
 function array_num(size,num){
   return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
+}
+
+function HTMLlink(text,url){
+  return "<a href='"+url+"'>"+text+"</a>";
 }
 
 function add_goals(){
@@ -304,6 +313,8 @@ function add_indicators(){
       body.setAttribute("class", "indicator");
       goalLi.appendChild(responsiveTable).appendChild(nestedTable);
      }else{
+       var column = [indicator.indicator,indicator.leads,HTMLlink(indicator.available,indicator.data.url)];
+       append_row(indicatorsId,column);
       append_row(indicatorsId,[indicator.indicator,indicator.leads,indicator.available]);
     }
   }
