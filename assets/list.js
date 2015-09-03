@@ -273,10 +273,9 @@ function add_targets(){
       var nestedOl = document.createElement("ul");
       nestedOl.setAttribute("id", targetId);
       goalLi.appendChild(nestedOl);
-    }else{
-      var goalLiUl = document.getElementById(targetId);
-      append('li',goalLiUl,"target-"+target.id,"target",target.id+": "+target.title);
     }
+    var goalLiUl = document.getElementById(targetId);
+    append('li',goalLiUl,"target-"+target.id,"target",target.id+": "+target.title);
   }
 }
 
