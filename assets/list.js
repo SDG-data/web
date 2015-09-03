@@ -1,5 +1,5 @@
 // Base URL
-var version = "v0.03"
+var version = "v0.05"
 var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/"
 //Read Goals, Targets and Indicators
 var sdgs = [];
@@ -293,7 +293,7 @@ function add_indicators(){
       nestedTable.setAttribute("class","table table-striped table-bordered");
       var header = nestedTable.createTHead();
       var rowObject = header.insertRow(0);
-      var columns=["Indicator","Leads","Available"];
+      var columns=["Indicator","Category","Leads","Available"];
       for (var ii in columns ){
           var th = document.createElement('th');
           th.innerHTML = columns[ii];
@@ -304,7 +304,7 @@ function add_indicators(){
       body.setAttribute("class", "indicator");
       goalLi.appendChild(responsiveTable).appendChild(nestedTable);
      }else{
-      append_row(indicatorsId,[indicator.indicator,indicator.leads,indicator.available]);
+      append_row(indicatorsId,[indicator.indicator,indicator.category,indicator.leads,indicator.available]);
     }
   }
 }
