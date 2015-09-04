@@ -52,6 +52,9 @@
 
   <script src="{{site.baseurl}}/assets/site.js"></script>
   {% if page.js %}
-  <script src="{{site.baseurl}}/assets/{{page.js}}"></script>
+  {% for file in page.js %}
+  <script src="{{site.baseurl}}/assets/{{file}}"></script>
+  {% endfor %}
+
   {% endif %}
 </footer>
