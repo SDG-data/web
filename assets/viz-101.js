@@ -33,7 +33,7 @@ function append_viz(vizHook,viz){
   append('p',vizHook,"viz-"+viz.goal,"",viz.description);
   append_raw(vizHook,viz.embed);
   append('a',vizHook,"viz-"+viz.goal,"","Source: "+viz["source-name"],viz["source-link"]);
-
+  append('hr',vizHook,"","","");
 }
 
 var visualizations={};
