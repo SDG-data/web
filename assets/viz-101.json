@@ -5,9 +5,9 @@
       "target": 1.1,
       "viz-title": "Extreme poverty IS decreasing",
       "description":"The % of world population that live with less that 1.25$/day ppp is has decreased since 200 from X% to Y%. If we extrapolate, we will get to Z% by 2030.",
-      "source-name":"Source name",
-      "source-link":"#source-link",
-      "embed": "<iframe></>iframde"
+      "source-name":"World Bank",
+      "source-link":"http://databank.worldbank.org/data/reports.aspx?source=poverty-and-equity-database",
+      "embed": "<img src='http://www.brookings.edu/~/media/Multimedia/Interactives/2013/global_poverty/fig101.jpg'>"
     },
     {
       "goal": 2,
