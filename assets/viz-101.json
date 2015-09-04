@@ -7,7 +7,16 @@
       "description":"The % of world population that live with less that 1.25$/day ppp is has decreased since 200 from X% to Y%. If we extrapolate, we will get to Z% by 2030.",
       "source-name":"Source name",
       "source-link":"#source-link",
-      "embed": "No Poverty"
+      "embed": "<iframe></>iframde"
+    },
+    {
+      "goal": 2,
+      "target": 2.2,
+      "viz-title": "Women in parlaments",
+      "description":"Lorem Ipsum",
+      "source-name":"Source name",
+      "source-link":"#source-link",
+      "embed": ""
     }
   ],
   "meta": {
