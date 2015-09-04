@@ -7,16 +7,34 @@
       "description":"The % of world population that live with less that 1.25$/day ppp is has decreased since 200 from X% to Y%. If we extrapolate, we will get to Z% by 2030.",
       "source-name":"Source name",
       "source-link":"#source-link",
-      "embed": "<iframe></>iframde"
+      "embed": "<iframe></iframe>"
     },
     {
       "goal": 2,
       "target": 2.2,
-      "viz-title": "Women in parlaments",
-      "description":"Lorem Ipsum",
-      "source-name":"Source name",
-      "source-link":"#source-link",
-      "embed": "<embed>"
+      "viz-title": "World maps of food supply (kcal per capita per day), 1961-2009",
+      "description":"",
+      "source-name":"Max Rosner",
+      "source-link":"http://ourworldindata.org/wp-content/uploads/datamaps/kcalPerCapita_since1961_FAO/kcalPerCapita_since1961_FAO.html",
+      "embed": ""
+    },
+    {
+      "goal": 2,
+      "target": 2.3,
+      "viz-title": "Crop yield gap (actual yield as % of attainable yield)",
+      "description":"",
+      "source-name":"Global Yield Gap Atlas",
+      "source-link":"http://www.yieldgap.org/",
+      "embed": ""
+    },
+    {
+      "goal": 5,
+      "target": 5.5,
+      "viz-title": "Labor force participation",
+      "description":"",
+      "source-name":"No Ceilings",
+      "source-link":"http://noceilings.org/map/#LFSFFE15&2012",
+      "embed": ""
     }
   ],
   "meta": {
