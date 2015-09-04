@@ -37,6 +37,12 @@ function append(htype,hookElement,id,classes,value,link){
   hookElement.appendChild(wrapper).appendChild(newListItem);
 }
 
+function append_raw(hookElement,content){
+  var wrapper = document.createElement("div");
+  wrapper.innerHTML=content;
+  hookElement.appendChild(wrapper);
+}
+
 function append_row(hookElement,row){
  var table = document.getElementById(hookElement);
   var rowObject = table.insertRow(0);
