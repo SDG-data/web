@@ -2,6 +2,11 @@
 //When page loadded, read data and URL state, if any
 $( document ).ready(load_data());
 
+function page_main(){
+  update_stats();
+  load_data_state();
+}
+
 function load_data_state(){
   var data_state= getURLParameter('data');
   switch(data_state) {

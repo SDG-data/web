@@ -1,6 +1,7 @@
+//Common fnctions for data Loading
 // Base URL
-var version = "v0.05"
-var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/"
+var version = "v0.05";
+var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/";
 //Read Goals, Targets and Indicators
 var sdgs = [];
 var stats = {};
@@ -17,8 +18,7 @@ function load_data(){
       //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
       sdgs[data.meta.id]=data;
       if (Object.keys(sdgs).length == 3) {
-        update_stats();
-        load_data_state();
+        page_main();
         data_loaded=1;}
   });
 });
