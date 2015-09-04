@@ -23,3 +23,29 @@ function load_data(){
   });
 });
 }
+
+function append(htype,hookElement,id,classes,value,link){
+  var wrapper = document.createElement("div");
+  var newListItem = document.createElement(htype);
+  wrapper.setAttribute("id", id);
+  newListItem.setAttribute("class", classes);
+  if (typeof link !== 'undefined') {
+    newListItem.setAttribute("href", link);
+  }
+  var ListValue = document.createTextNode(value);
+  newListItem.appendChild(ListValue);
+  hookElement.appendChild(wrapper).appendChild(newListItem);
+}
+
+function append_row(hookElement,row){
+ var table = document.getElementById(hookElement);
+  var rowObject = table.insertRow(0);
+  for (var i in row){
+    cell = rowObject.insertCell(i);
+    cell.innerHTML = row[i];
+  }
+}
+
+function array_num(size,num){
+  return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
+}

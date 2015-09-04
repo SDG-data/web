@@ -209,29 +209,6 @@ function list_targets(){
   }
 }
 
-function append(htype,hookElement,id,classes,value){
-  var wrapper = document.createElement("div");
-  var newListItem = document.createElement(htype);
-  wrapper.setAttribute("id", id);
-  newListItem.setAttribute("class", classes);
-  var ListValue = document.createTextNode(value);
-  newListItem.appendChild(ListValue);
-  hookElement.appendChild(wrapper).appendChild(newListItem);
-}
-
-function append_row(hookElement,row){
- var table = document.getElementById(hookElement);
-  var rowObject = table.insertRow(0);
-  for (var i in row){
-    cell = rowObject.insertCell(i);
-    cell.innerHTML = row[i];
-  }
-}
-
-function array_num(size,num){
-  return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
-}
-
 function add_goals(){
   $('#load-all').addClass("active");
   document.getElementById("dashboard-title").innerHTML = "SDG Goals";
