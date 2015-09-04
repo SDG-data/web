@@ -27,11 +27,20 @@ function add_goals(){
   }
 }
 
+function append_viz(vizHook,viz){
+  append('div',vizHook,"viz-"+viz.goal,"",viz["viz-title"]);
+  append('a',vizHook,"viz-"+viz.goal,"","Relevant target: "+viz.target,"/web/list/?data=list_targets#");
+  append('p',vizHook,"viz-"+viz.goal,"",viz.description);
+  append_raw(vizHook,viz.embed);
+  append('a',vizHook,"viz-"+viz.goal,"","Source: "+viz["source-name"],viz["source-link"]);
+
+}
+
 var visualizations={};
 function load_vizrefs(){
   // Load Visualizations references from the json file
   d3.json("/web/assets/viz-101.json", function (error, data) {
-    for (i in data.visualizations){
+    for ( var i in data.visualizations){
       var viz=data.visualizations[i];
       var vizHook = document.getElementById("goal-"+viz.goal);
       console.log(viz,vizHook);
@@ -39,7 +48,7 @@ function load_vizrefs(){
         throw new Error("Something went badly wrong!");
       }
     //append(htype,hookElement,id,classes,value,link)
-    append('div',vizHook,"viz-"+viz.goal,"",viz["viz-title"]);
+    append_viz(vizHook,viz);
   }
   });
 }
