@@ -2,7 +2,9 @@
 layout: empty
 title: Full List
 permalink: /list/
-js: list.js
+js:
+ - data-loader.js
+ - list.js
 redirect_from:
   - /
 ---

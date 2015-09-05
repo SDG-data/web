@@ -1,0 +1,72 @@
+{
+  "visualizations": [
+    {
+      "goal": 1,
+      "target": 1.1,
+      "viz-title": "Extreme poverty IS decreasing",
+      "description":"If developing countries were to grow at the rates they achieved during the 2000’s the global poverty headcount could decline from 14.5% in 2011 to 4.9% in 2030 – short of ‘ending poverty’.",
+      "source-name":"World Bank",
+      "source-link":"http://blogs.worldbank.org/futuredevelopment/poverty-will-only-end-2030-if-growth-shared",
+      "embed": "<img src='http://blogs.worldbank.org/futuredevelopment/files/futuredevelopment/blog_post_chart_11128_image001.png'>"
+    },
+    {
+      "goal": 2,
+      "target": 2.2,
+      "viz-title": "World Map of Food Supply (kcal per capita per day), 1961-2009",
+      "description":"",
+      "source-name":"Max Rosner",
+      "source-link":"http://ourworldindata.org/wp-content/uploads/datamaps/kcalPerCapita_since1961_FAO/kcalPerCapita_since1961_FAO.html",
+      "embed": "<iframe width='600px' height='400px' src='http://ourworldindata.org/wp-content/uploads/datamaps/kcalPerCapita_since1961_FAO/kcalPerCapita_since1961_FAO.html'></iframe>"
+    },
+    {
+      "goal": 2,
+      "target": 2.3,
+      "viz-title": "Yield Gap for Major Crops",
+      "description":"",
+      "source-name":"Food and Agriculture Organization of the United Nations (FAO)",
+      "source-link":"http://www.fao.org/nr/gaez/about-data-portal/yield-and-production-gaps/en/",
+      "embed": "<a href='http://www.fao.org/nr/gaez/about-data-portal/yield-and-production-gaps/en/'><img src='http://www.fao.org/uploads/pics/GAEZportal_Page_6.png'></a>"
+    },
+    {
+      "goal": 5,
+      "target": "5.1, 5.5, 5.c",
+      "viz-title": "Female Representation in National Parliaments",
+      "description":"",
+      "source-name":"No Ceilings",
+      "source-link":"http://noceilings.org/map/#FEREPNTP&2013",
+      "embed": "<a href='http://noceilings.org/map/#FEREPNTP&2013'><img src='http://noceilings.org/map/embed/FEREPNTP-2013-w.png' alt='No Ceilings embedded map' width='600px' border='0'/></a>"
+    },
+    {
+      "goal": 6,
+      "target": 6.1,
+      "viz-title": "Overall Water Risk - Current Conditions",
+      "description":"",
+      "source-name":"World Resources Institute",
+      "source-link":"http://tinyurl.com/obhrvx3",
+      "embed": "<a href='http://tinyurl.com/obhrvx3'><img style='width: 600px;' border='0' alt='Overall water risk - Current conditions' src='/web/assets/img/6_water_risk.jpg'></a>"
+
+    },
+    {
+      "goal": 14,
+      "target": 14.1,
+      "viz-title": "Marine Pollution - Clean Waters Index",
+      "description":"",
+      "source-name":"Ocean Health Index",
+      "source-link":"http://www.oceanhealthindex.org/Goals/Clean_Waters",
+      "embed": "<a href='http://www.oceanhealthindex.org/Countries'><img style='width: 600px;' border='0' alt='Clean waters index' src='/web/assets/img/14_clean_waters.jpg'></a>"
+    },
+    {
+      "goal": 16,
+      "target": 6.1,
+      "viz-title": "Homicides per 100,000 per year",
+      "description":"",
+      "source-name":"Max Rosner",
+      "source-link":"http://ourworldindata.org/data/violence-rights/homicides/#world-map-of-homicide-rates-today-max-roserref",
+      "embed": "<a href='http://www.ourworldindata.org/data/violence-rights/homicides/#world-map-of-homicide-rates-today-max-roserref'><img style='width: 600px;' border='0' alt='Clean waters index' src='http://ourworldindata.org/VisualHistoryOf/Violence/StaticImages/Homicides-per-100_000-per-year.png'></a>"
+    }
+  ],
+  "meta": {
+    "id": "Visualization",
+    "description": "One Visualization per goal"
+  }
+}

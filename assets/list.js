@@ -1,31 +1,11 @@
-// Base URL
-var version = "v0.05"
-var dataurl = "https://raw.githubusercontent.com/SDG-data/SDGs/"+version+"/"
-//Read Goals, Targets and Indicators
-var sdgs = [];
-var stats = {};
-
-files = ["goals","targets","indicators"];
-var data_loaded = 0;
-function load_data(){
-  //Reset and Read into memory the SDGs
-  sdgs = {};
-  stats = {};
-  files.forEach(function (f) {
-    console.log("Loading "+f);
-    d3.json(dataurl+f+".json", function (error, data) {
-      //for (var attrname in data) { sdgs[attrname] = data[attrname]; }
-      sdgs[data.meta.id]=data;
-      if (Object.keys(sdgs).length == 3) {
-        update_stats();
-        load_data_state();
-        data_loaded=1;}
-  });
-});
-}
 
 //When page loadded, read data and URL state, if any
 $( document ).ready(load_data());
+
+function page_main(){
+  update_stats();
+  load_data_state();
+}
 
 function load_data_state(){
   var data_state= getURLParameter('data');
@@ -227,29 +207,6 @@ function list_targets(){
     var target= targets[i];
     append('li',sdgList,"goal-"+target.target,"",target.id+": "+target.title+".");
   }
-}
-
-function append(htype,hookElement,id,classes,value){
-  var wrapper = document.createElement("div");
-  var newListItem = document.createElement(htype);
-  wrapper.setAttribute("id", id);
-  newListItem.setAttribute("class", classes);
-  var ListValue = document.createTextNode(value);
-  newListItem.appendChild(ListValue);
-  hookElement.appendChild(wrapper).appendChild(newListItem);
-}
-
-function append_row(hookElement,row){
- var table = document.getElementById(hookElement);
-  var rowObject = table.insertRow(0);
-  for (var i in row){
-    cell = rowObject.insertCell(i);
-    cell.innerHTML = row[i];
-  }
-}
-
-function array_num(size,num){
-  return Array.apply(null, new Array(size)).map(Number.prototype.valueOf,num);
 }
 
 function add_goals(){
