@@ -28,7 +28,7 @@ function add_goals(){
 }
 
 function append_viz(vizHook,viz){
-  append('div',vizHook,"viz-"+viz.goal,"h4",viz["viz-title"]);
+  append('div',vizHook,"viz-"+viz.goal,"h4 lead",viz["viz-title"]);
   append('a',vizHook,"viz-"+viz.goal,"","Relevant target: "+viz.target,"/web/list/?data=list_targets#");
   append('p',vizHook,"viz-"+viz.goal,"",viz.description);
   append_raw(vizHook,viz.embed);
