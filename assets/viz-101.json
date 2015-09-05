@@ -58,7 +58,7 @@
     {
       "goal": 16,
       "target": 6.1,
-      "viz-title": "World Map of Homicide Rates Today",
+      "viz-title": "Homicides per 100,000 per year",
       "description":"",
       "source-name":"Max Rosner",
       "source-link":"http://ourworldindata.org/data/violence-rights/homicides/#world-map-of-homicide-rates-today-max-roserref",
