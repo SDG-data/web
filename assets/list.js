@@ -29,12 +29,14 @@ $( document ).ready(load_data());
 
 function load_data_state(){
   var data_state= getURLParameter('data');
-  switch(data_state) {
-    case "full_list":
-        full_list();
-        break;
-    default:
-        vizs();
+  var defined_functions = Object.keys(window).filter(function(x)
+  {
+    if (!(window[x] instanceof Function)) return false;
+    return !/\[native code\]/.test(window[x].toString()) ? true : false;
+  });
+
+  if ( defined_functions.indexOf(data_state) > -1 ){
+    window[data_state]();
   }
 }
 
