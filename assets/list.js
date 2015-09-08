@@ -4,10 +4,9 @@ $( document ).ready(load_data());
 
 function page_main(){
   update_stats();
-  load_data_state();
 }
 
-function load_data_state(){
+function load_data_state(default_function){
   var data_state= getURLParameter('data');
   var defined_functions = Object.keys(window).filter(function(x)
   {
