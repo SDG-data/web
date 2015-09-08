@@ -24,22 +24,6 @@ function load_data(){
 });
 }
 
-function load_data_state(default_function){
-  var data_state= getURLParameter('data');
-  if (data_state===null && default_function !== 'undefined'){
-    data_state=default_function;
-  }
-  var defined_functions = Object.keys(window).filter(function(x)
-  {
-    if (!(window[x] instanceof Function)) return false;
-    return !/\[native code\]/.test(window[x].toString()) ? true : false;
-  });
-
-  if ( defined_functions.indexOf(data_state) > -1 ){
-    window[data_state]();
-  }
-}
-
 function append(htype,hookElement,id,classes,value,link){
   var wrapper = document.createElement("div");
   var newListItem = document.createElement(htype);
