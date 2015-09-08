@@ -4,19 +4,9 @@ $( document ).ready(load_data());
 
 function page_main(){
   update_stats();
-  load_data_state();
+  load_data_state(default_function="full_list");
 }
 
-function load_data_state(){
-  var data_state= getURLParameter('data');
-  switch(data_state) {
-    case "full_list":
-        full_list();
-        break;
-    default:
-        vizs();
-  }
-}
 
 function full_list(){
   //Add listing and stats
@@ -66,7 +56,7 @@ function add_stack_plot(){
             data: stats.goal_targets
         },
         {
-            label: "Indicators",
+            label: "Potential Indicators",
             fillColor: "rgba(151,187,205,0.5)",
             strokeColor: "rgba(151,187,205,0.8)",
             highlightFill: "rgba(151,187,205,0.75)",
@@ -81,7 +71,7 @@ function add_stack_plot(){
  var anchor=document.getElementById("dashboard-content");
  var wrapper = document.createElement("div");
  var title = document.createElement("h3");
- title.innerHTML = "Indicators and Targets per Goal";
+ title.innerHTML = "Indicator candidates and Targets per Goal";
  var canvas = document.createElement("canvas");
  canvas.setAttribute("id", "barplot");
  canvas.setAttribute("class", "barplot");
@@ -187,7 +177,7 @@ function list_indicators(){
   updateURLParameters("list_indicators");
   empty_dashboard();
   $('#indicators').addClass("active");
-  document.getElementById("dashboard-title").innerHTML = "SDG Indicators";
+  document.getElementById("dashboard-title").innerHTML = "SDG Indicators Candidates";
   var sdgList = document.getElementById("dashboard-content");
   var indicators=sdgs.indicators.indicators;
   for (var i in indicators){
@@ -249,7 +239,7 @@ function add_indicators(){
       nestedTable.setAttribute("class","table table-striped table-bordered");
       var header = nestedTable.createTHead();
       var rowObject = header.insertRow(0);
-      var columns=["Indicator","Category","Leads","Available"];
+      var columns=["Candidate Indicator","Category","Leads","Available"];
       for (var ii in columns ){
           var th = document.createElement('th');
           th.innerHTML = columns[ii];

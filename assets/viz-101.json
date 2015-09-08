@@ -57,12 +57,21 @@
     },
     {
       "goal": 16,
-      "target": 6.1,
+      "target": 16.1,
       "viz-title": "Homicides per 100,000 per year",
       "description":"",
       "source-name":"Max Rosner",
       "source-link":"http://ourworldindata.org/data/violence-rights/homicides/#world-map-of-homicide-rates-today-max-roserref",
       "embed": "<a href='http://www.ourworldindata.org/data/violence-rights/homicides/#world-map-of-homicide-rates-today-max-roserref'><img style='width: 600px;' border='0' alt='Clean waters index' src='http://ourworldindata.org/VisualHistoryOf/Violence/StaticImages/Homicides-per-100_000-per-year.png'></a>"
+    },
+    {
+      "goal": 16,
+      "target": 16.7,
+      "viz-title": "The number of world citizens living under different political systems.",
+      "description":"The majority of the world’s countries are now governed by democratic regimes, defined as systems with citizen political participation, constraints on the power of the executive, and a guarantee of civil liberties.",
+      "source-name":"Max Roser (2015) – ‘Democratisation’. Published online at OurWorldInData.org.",
+      "source-link":"http://ourworldindata.org/data/political-regimes/democratisation/#share-of-world-population-living-in-democracies",
+      "embed": "<iframe width='100%' height='500px' src='http://ourworldindata.org/wp-content/uploads/nvd3/nvd3_StackedArea_PopByRegime/nvd3_StackedArea_PopByRegime.html'></iframe>"
     }
   ],
   "meta": {
