@@ -4,20 +4,9 @@ $( document ).ready(load_data());
 
 function page_main(){
   update_stats();
+  load_data_state(default_function="full_list");
 }
 
-function load_data_state(default_function){
-  var data_state= getURLParameter('data');
-  var defined_functions = Object.keys(window).filter(function(x)
-  {
-    if (!(window[x] instanceof Function)) return false;
-    return !/\[native code\]/.test(window[x].toString()) ? true : false;
-  });
-
-  if ( defined_functions.indexOf(data_state) > -1 ){
-    window[data_state]();
-  }
-}
 
 function full_list(){
   //Add listing and stats
