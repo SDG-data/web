@@ -12,11 +12,11 @@
     {
       "goal": 2,
       "target": 2.2,
-      "viz-title": "World Map of Food Supply (kcal per capita per day), 1961-2009",
+      "viz-title": "Food Supply (kcal per capita per day), 1961-2009",
       "description":"",
-      "source-name":"Max Rosner",
-      "source-link":"http://ourworldindata.org/wp-content/uploads/datamaps/kcalPerCapita_since1961_FAO/kcalPerCapita_since1961_FAO.html",
-      "embed": "<iframe width='600px' height='400px' src='http://ourworldindata.org/wp-content/uploads/datamaps/kcalPerCapita_since1961_FAO/kcalPerCapita_since1961_FAO.html'></iframe>"
+      "source-name":"Max Roser (2015) – ‘Food per Person’. Published online at OurWorldInData.org.",
+      "source-link":"http://ourworldindata.org/data/food-agriculture/food-per-person/",
+      "embed": "<iframe width='750px' height='500px' src='http://ourworldindata.org/wp-content/uploads/datamaps/kcalPerCapita_since1961_FAO/kcalPerCapita_since1961_FAO.html'></iframe>"
     },
     {
       "goal": 2,
@@ -27,6 +27,24 @@
       "source-link":"http://www.fao.org/nr/gaez/about-data-portal/yield-and-production-gaps/en/",
       "embed": "<a href='http://www.fao.org/nr/gaez/about-data-portal/yield-and-production-gaps/en/'><img src='http://www.fao.org/uploads/pics/GAEZportal_Page_6.png'></a>"
     },
+    {
+      "goal": 3,
+      "target": 3.2,
+      "viz-title": "Child Mortality, 1950-2012",
+      "description":"",
+      "source-name":"Max Roser (2015) – ‘Child Mortality’.",
+      "source-link":"http://ourworldindata.org/data/population-growth-vital-statistics/child-mortality/",
+      "embed": "<iframe width='750px' height='500px' src='http://ourworldindata.org/roser/maps/ChildMortalitySince1950_childmortalityOrg/ChildMortalitySince1950_childmortalityOrg.html'></iframe>"
+    },
+    {
+      "goal": 4,
+      "target": 4.2,
+      "viz-title": "",
+      "description":"",
+      "source-name":"",
+      "source-link":"http://ourworldindata.org/data/population-growth-vital-statistics/child-mortality/",
+      "embed": "<div style='width:300px;line-height:20px'><div style='background-color:#333; padding:0px 5px; font-weight:bold'><div style='color:#fff; font-size:12px; line-height:20px;'><a href='http://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?display=map' style='color:#fff;text-decoration:none;' class='active'>Lower secondary completion rate, total (% of relevant age group)</a></div></div><script type='text/javascript'>widgetContext = { 'url': 'http://data.worldbank.org/widgets/indicator/0/web_widgets_1/SE.SEC.CMPT.LO.ZS/countries', 'width': 300, 'height': 225, 'widgetid': 'web_widget_iframe_67042fe7219a79dcbe6f8e1ffb8f1848' };</script><div id='web_widget_iframe_67042fe7219a79dcbe6f8e1ffb8f1848'></div><script src='http://data.worldbank.org/profiles/datafinder/modules/contrib/web_widgets/iframe/web_widgets_iframe.js'></script><div style='font-size: 10px; color:#000'>Data from <a href='http://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?display=map' style='color:#CCC;'>World Bank</a></div></div>"
+    },    
     {
       "goal": 5,
       "target": "5.1, 5.5, 5.c",
@@ -47,6 +65,46 @@
 
     },
     {
+      "goal": 7,
+      "target": "7.1, 7.b",
+      "viz-title": "Share of the population using reliable electricity in rural area",
+      "description":"",
+      "source-name":"World Bank",
+      "source-link":"http://data.worldbank.org/indicator/EG.ELC.ACCS.RU.ZS",
+      "embed": "<img style='width: 750px;' border='0' alt='Share of the population using reliable electricity in rural area' src='/web/assets/img/7_rural_electricity.png'>"
+
+    },
+    {
+      "goal": 9,
+      "target": "",
+      "viz-title": "Per capita productivity",
+      "description":"",
+      "source-name":"World Bank",
+      "source-link":"http://data.worldbank.org/indicator/SL.GDP.PCAP.EM.KD",
+      "embed": "<img style='width: 750px;' border='0' alt='per capita productivity' src='/web/assets/img/9_work_productivity.png'>"
+
+    },
+    {
+      "goal": 10,
+      "target": 10.1,
+      "viz-title": "Relative poverty",
+      "description":"",
+      "source-name":"World Bank",
+      "source-link":"http://data.worldbank.org/indicator/SI.POV.NAHC",
+      "embed": "<img style='width: 750px;' border='0' alt='Relative poverty' src='/web/assets/img/10_inequality.png'>"
+
+    },
+    {
+      "goal": 11,
+      "target": 11.6,
+      "viz-title": "Air quality",
+      "description":"",
+      "source-name":"World Health Organization (Size of Marker = PM 10.0, Color of Marker = PM 2.5 Level)",
+      "source-link":"http://www.who.int/phe/health_topics/outdoorair/databases/cities/en/",
+      "embed": "<img style='width: 750px;' border='0' alt='air quality' src='/web/assets/img/11_air_quality.png'>"
+
+    },
+    {
       "goal": 14,
       "target": 14.1,
       "viz-title": "Marine Pollution - Clean Waters Index",
@@ -60,9 +118,9 @@
       "target": 16.1,
       "viz-title": "Homicides per 100,000 per year",
       "description":"",
-      "source-name":"Max Rosner",
-      "source-link":"http://ourworldindata.org/data/violence-rights/homicides/#world-map-of-homicide-rates-today-max-roserref",
-      "embed": "<a href='http://www.ourworldindata.org/data/violence-rights/homicides/#world-map-of-homicide-rates-today-max-roserref'><img style='width: 600px;' border='0' alt='Clean waters index' src='http://ourworldindata.org/VisualHistoryOf/Violence/StaticImages/Homicides-per-100_000-per-year.png'></a>"
+      "source-name":"Max Roser (2015) – ‘Homicides’. Published online at OurWorldInData.org.",
+      "source-link":"http://ourworldindata.org/data/violence-rights/homicides/",
+      "embed": "<iframe width='750px' height='500px' src='http://ourworldindata.org/wp-content/uploads/datamaps/HomicideWorldMap/HomicideWorldMapJan2014.html'></iframe>"
     },
     {
       "goal": 16,
@@ -72,6 +130,16 @@
       "source-name":"Max Roser (2015) – ‘Democratisation’. Published online at OurWorldInData.org.",
       "source-link":"http://ourworldindata.org/data/political-regimes/democratisation/#share-of-world-population-living-in-democracies",
       "embed": "<iframe width='100%' height='500px' src='http://ourworldindata.org/wp-content/uploads/nvd3/nvd3_StackedArea_PopByRegime/nvd3_StackedArea_PopByRegime.html'></iframe>"
+    },
+    {
+      "goal": 17,
+      "target": 17.18,
+      "viz-title": "Statistical capacity",
+      "description":"",
+      "source-name":"World Bank",
+      "source-link":"http://data.worldbank.org/indicator/IQ.SCI.MTHD",
+      "embed": "<img style='width: 800px;' border='0' alt='air quality' src='/web/assets/img/17_statistical_capacity.png'>"
+
     }
   ],
   "meta": {
