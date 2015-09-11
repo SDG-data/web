@@ -38,13 +38,40 @@
     },
     {
       "goal": 4,
-      "target": 4.2,
-      "viz-title": "",
-      "description":"",
-      "source-name":"",
-      "source-link":"http://ourworldindata.org/data/population-growth-vital-statistics/child-mortality/",
-      "embed": "<div style='width:300px;line-height:20px'><div style='background-color:#333; padding:0px 5px; font-weight:bold'><div style='color:#fff; font-size:12px; line-height:20px;'><a href='http://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?display=map' style='color:#fff;text-decoration:none;' class='active'>Lower secondary completion rate, total (% of relevant age group)</a></div></div><script type='text/javascript'>widgetContext = { 'url': 'http://data.worldbank.org/widgets/indicator/0/web_widgets_1/SE.SEC.CMPT.LO.ZS/countries', 'width': 300, 'height': 225, 'widgetid': 'web_widget_iframe_67042fe7219a79dcbe6f8e1ffb8f1848' };</script><div id='web_widget_iframe_67042fe7219a79dcbe6f8e1ffb8f1848'></div><script src='http://data.worldbank.org/profiles/datafinder/modules/contrib/web_widgets/iframe/web_widgets_iframe.js'></script><div style='font-size: 10px; color:#000'>Data from <a href='http://data.worldbank.org/indicator/SE.SEC.CMPT.LO.ZS?display=map' style='color:#CCC;'>World Bank</a></div></div>"
-    },    
+      "target": "4.1, 4.5",
+      "viz-title": "Global out-of-school rate by type and gender, 2000-2013",
+      "description":"Though out-of-school rate and gender gap is generally decreading, data show little improvement in recent years.",
+      "source-name":"UNESCO (2015), 'A growing number of children and adolescents are out of school as aid fails to meet the mark'",
+      "source-link":"http://www.uis.unesco.org/Education/Documents/fs-31-out-of-school-children-en.pdf",
+      "embed": "<img style='width: 600px;' border='0' alt='Share of the population using reliable electricity in rural area' src='/web/assets/img/4_global_out_of_school_rate.png'>"
+    },
+    {
+      "goal": 4,
+      "target": "4.1",
+      "viz-title": "How likely children who are currently out of school will attend in the future, 2013",
+      "description":"Globally, 41% or 24 million of all out-of-school children have never attended school and will probably never start if current trends continue. About 20% of these children attended school in the past but could not continue their education, and 38% are likely to start late and will be overage for their grade. The majority of out-of-school children is in Sub-Saharan Africa.",
+      "source-name":"UNESCO (2015), 'A growing number of children and adolescents are out of school as aid fails to meet the mark'",
+      "source-link":"http://www.uis.unesco.org/Education/Documents/fs-31-out-of-school-children-en.pdf",
+      "embed": "<img style='width: 600px;' border='0' alt='Share of the population using reliable electricity in rural area' src='/web/assets/img/4_primary_enrollment_likelihood.png'>"
+    },     
+    {
+      "goal": 4,
+      "target": "4.1, 4.c",
+      "viz-title": "Primary teacher gap",
+      "description":"Given current trends, some countries, mostly in Sub-Saharan Africa, close the teacher gap for universal primary education only after 2030.",
+      "source-name":"UNESCO (2013), 'A teacher for every child: Projecting global teacher needs from 2015-2030'",
+      "source-link":"http://www.uis.unesco.org/Education/Documents/fs27-2013-teachers-projections.pdf",
+      "embed": "<img style='width: 750px;' border='0' alt='Share of the population using reliable electricity in rural area' src='/web/assets/img/4_primary_teacher_gap.png'>"
+    },  
+    {
+      "goal": 4,
+      "target": "all",
+      "viz-title": "EDUCATION 2030 - UNESCO's infographic for Goal 4",
+      "description":"1/5 of UNESCO's Goal 4 infographic slide. Click on the image to continue.",
+      "source-name":"UNESCO",
+      "source-link":"http://www.uis.unesco.org/Education/Pages/Education-2030.aspx",
+      "embed": "<a href='http://www.uis.unesco.org/Education/Pages/Education-2030.aspx'><img style='width: 600px;' border='0' alt='Educational equity' src='/web/assets/img/4_equity_full.jpg'></a>"
+    }, 
     {
       "goal": 5,
       "target": "5.1, 5.5, 5.c",
