@@ -13,7 +13,7 @@ redirect_from:
   <div class="col-sm-2 col-md-2 sidebar">
    <ul class="nav nav-sidebar">
    <li id="load-all" class="active" ><a  onClick="full_list()" href="#">Load All<span class="sr-only">(current)</span></a></li>
-   <li id="goals"><a id="goals-num" onClick="list_goals()" href="#"> ?? Goals</a></li>
+   <li id="goals"><a class="anchor" id="goals-num" onClick="list_goals()" href="#"> ?? Goals</a></li>
    <li id="targets"><a id="targets-num" onClick="list_targets()" href="#">?? Targets</a></li>
    <li id="indicators"><a id="indicators-num" onClick="list_indicators()" href="#">?? Indicators</a></li>
    </ul>
