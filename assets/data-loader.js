@@ -43,8 +43,8 @@ function load_data_state(default_function){
 function append(htype,hookElement,id,classes,value,link){
   var wrapper = document.createElement("div");
   var newListItem = document.createElement(htype);
-  wrapper.setAttribute("id", id);
-  wrapper.setAttribute("class", "anchor")
+  //wrapper.setAttribute("id", id);
+  wrapper.appendChild( document.createElement("a").setAttribute("id",id).setAttribute("class", "anchor") );
   newListItem.setAttribute("class", classes);
   if (typeof link !== 'undefined') {
     newListItem.setAttribute("href", link);
