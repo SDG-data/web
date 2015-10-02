@@ -7,4 +7,6 @@ function updateURLParameters(datahash) {
   var newurl = window.location.pathname+"?data="+datahash;
   if(window.location.hash) newurl += window.location.hash;
   window.history.pushState("", "", newurl);
+  if(window.location.hash) { var tmp = window.location.hash; window.location.hash = ''; window.location.hash = tmp; }
+
 }
