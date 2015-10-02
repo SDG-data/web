@@ -5,5 +5,6 @@ function getURLParameter(name) {
 
 function updateURLParameters(datahash) {
   var newurl = window.location.pathname+"?data="+datahash;
+  if(window.location.hash) newurl += "#" + window.location.hash;
   window.history.pushState("", "", newurl);
 }
