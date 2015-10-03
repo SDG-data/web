@@ -5,7 +5,7 @@ function getURLParameter(name) {
 
 function updateURLParameters(datahash) {
   var hash;
-  if (window.location.search.includes(datahash) and window.location.hash) {
+  if (window.location.search.includes(datahash) && window.location.hash) {
     hash = window.location.hash;
   }
   
