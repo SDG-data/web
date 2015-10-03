@@ -14,7 +14,7 @@ function full_list(){
   add_goals();
   add_targets();
   add_indicators();
-  //updateURLParameters("full_list");
+  updateURLParameters("full_list");
 }
 
 function update_stats(){
