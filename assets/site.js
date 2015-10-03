@@ -4,8 +4,16 @@ function getURLParameter(name) {
 }
 
 function updateURLParameters(datahash) {
-  if (window.location.search.includes(datahash)) return;
+  var hash;
+  if (window.location.search.includes(datahash) and window.location.hash) {
+    hash = window.location.hash;
+  }
   
   var newurl = window.location.pathname+"?data="+datahash;
   window.history.pushState("", "", newurl);
+  
+  if (hash) {
+    newurl += hash;
+    window.history.pushState("","",newurl);
+  }
 }
