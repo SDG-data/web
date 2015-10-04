@@ -4,6 +4,11 @@ function getURLParameter(name) {
 }
 
 function updateURLParameters(datahash) {
-  var newurl = window.location.pathname+"?data="+datahash;
-  window.history.pushState("", "", newurl);
+  if (window.location.search.includes(datahash) && window.location.hash) {
+    var yOffset = $(window.location.hash).offset().top;
+    $("body").scrollTop(yOffset);
+  } else {
+    var newurl = window.location.pathname+"?data="+datahash;
+    window.history.pushState("", "", newurl);
+  }
 }

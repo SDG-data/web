@@ -10,11 +10,11 @@ function page_main(){
 
 function full_list(){
   //Add listing and stats
-  updateURLParameters("full_list");
   empty_dashboard();
   add_goals();
   add_targets();
   add_indicators();
+  updateURLParameters("full_list");
 }
 
 function update_stats(){
